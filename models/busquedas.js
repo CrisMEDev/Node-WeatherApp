@@ -27,10 +27,16 @@ class Busquedas {
             });
             
             const respuesta = await instance.get();
-            console.log(respuesta.data);
-            
-            return []; // Retornar arreglo con lugares que conincidan con la búsqueda
 
+            return respuesta.data.features.map( lugar => ({    // Para retornar un objeto de forma implicita se usó 'lugar => ({})' en lugar de 'lugar => {}'
+                
+                id: lugar.id,
+                nombre: lugar.place_name,
+                lng: lugar.center[0],
+                lat: lugar.center[1]
+
+            })); // Retornar arreglo con lugares que conincidan con la búsqueda
+            
         } catch(err){
             return [];
         }
