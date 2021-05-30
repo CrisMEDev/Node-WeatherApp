@@ -1,8 +1,11 @@
+const fs = require('fs');
+
 const axios = require('axios');
 
 class Busquedas {
 
-    historial = ['Guanajuato', 'Tamaulipas', 'Veracruz'];
+    historial = [];
+    bdPath = './DB/weather_database.json'
 
     constructor(){
         // TODO: leer DB si existe
@@ -74,6 +77,32 @@ class Busquedas {
         } catch(error){
             throw error;
         }
+
+    }
+
+    agregarHistorial( lugar = '' ){
+        // Prevenir duplicados
+        if ( this.historial.includes( lugar.toLocaleLowerCase() ) ){
+            return;
+        }
+
+        this.historial.unshift( lugar.toLocaleLowerCase() );
+
+        // Grabar en una base de datos
+        this.guardarBD();
+    }
+
+    guardarBD(){
+
+        const payload = {
+            historia: this.historial
+        }
+
+        fs.writeFileSync( this.bdPath, JSON.stringify( payload ) );
+
+    }
+
+    leerDB(){
 
     }
 

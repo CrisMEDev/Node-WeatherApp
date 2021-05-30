@@ -22,12 +22,18 @@ const main = async() => {
                 
                 // Selecionar el lugar
                 const idLugarSeleccionado = await listarLugares( lugares );
+                if ( idLugarSeleccionado === '0' ) continue;
+
                 const lugarSeleccionado = lugares.find( lugar => lugar.id === idLugarSeleccionado );
+
+                // Guardar en DB
+                busquedas.agregarHistorial( lugarSeleccionado.nombre );
 
                 // Datos del clima
                 const clima = await busquedas.climaPorLugar( lugarSeleccionado.lat, lugarSeleccionado.lng );
 
                 // Mostrar resultados
+                console.clear();
                 console.log('\nInformacion de la cuidad\n'.green);
                 console.log('Ciudad:', lugarSeleccionado.nombre );
                 console.log('Lat:', lugarSeleccionado.lat );
@@ -38,6 +44,12 @@ const main = async() => {
                 console.log('Maxima: ', clima.max);
                 break;
             case 2:
+                busquedas.historial.forEach( ( lugar, index ) => {
+                    console.log(`${index + 1}. ${ lugar }`.blue);
+                });
+
+
+                break;
         }
 
         if ( value !== 0 ) await pausa();
