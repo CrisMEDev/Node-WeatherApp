@@ -2,6 +2,18 @@
 
 Aplicación para verificar cómo está el clima en ciertaregión.
 
+## Requerimientos
+* Crear en el directorio raíz del proyecto el archivo que contendrá los tokens par las peticiones http
+
+tokens.js
+```
+mapbox_token = 'MyToken';
+
+
+module.exports = {
+    mapbox_token
+}
+```
 
 ### Recursos usados
 
