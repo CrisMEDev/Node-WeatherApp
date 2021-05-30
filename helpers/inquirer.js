@@ -10,31 +10,15 @@ const menuOptions = [
         choices: [
 
             {
-                value: '1',
-                name: `${'1.'.blue.italic.bold} ${'Crear tarea'.italic.magenta}`
+                value: 1,
+                name: `${'1.'.blue.italic.bold} ${'Buscar ciudad'.italic.magenta}`
             },
             {
-                value: '2',
-                name: `${'2.'.blue.italic.bold} ${'Listar tareas'.italic.magenta}`
+                value: 2,
+                name: `${'2.'.blue.italic.bold} ${'Historial'.italic.magenta}`
             },
             {
-                value: '3',
-                name: `${'3.'.blue.italic.bold} ${'Listar tareas completadas'.italic.magenta}`
-            },
-            {
-                value: '4',
-                name: `${'4.'.blue.italic.bold} ${'Listar tareas pendientes'.italic.magenta}`
-            },
-            {
-                value: '5',
-                name: `${'5.'.blue.italic.bold} ${'Completar tarea(s)'.italic.magenta}`
-            },
-            {
-                value: '6',
-                name: `${'6.'.blue.italic.bold} ${'Borrar tarea'.italic.magenta}`
-            },
-            {
-                value: '0',
+                value: 0,
                 name: `${'0.'.blue.italic.bold} ${'Salir'.italic.magenta}`
             }
             
