@@ -5,10 +5,10 @@ Aplicación para verificar cómo está el clima en ciertaregión.
 ## Requerimientos
 * Crear en el directorio raíz del proyecto el archivo que contendrá los tokens par las peticiones http (Filename: .env)
 
-.env
+.env file
 ```
 MAPBOX_TOKEN=MyToken
-
+OPENWEATHER_TOKEN=MyToken
 ```
 
 ### Recursos usados
