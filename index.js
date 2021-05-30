@@ -1,8 +1,7 @@
+require('dotenv').config()      // Carga el archivo .env y crea las respectivas variables de entorno
+
 const { inquirerMenu, pausa, leerInput } = require("./helpers/inquirer");
 const Busquedas = require("./models/busquedas");
-
-
-
 
 const main = async() => {
     
