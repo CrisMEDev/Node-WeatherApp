@@ -8,7 +8,21 @@ class Busquedas {
     bdPath = './DB/weather_database.json'
 
     constructor(){
-        // TODO: leer DB si existe
+        this.leerDB();
+    }
+
+    get historialCapitalizado(){
+
+        // \w: cualquier letra del abecedario (mayuscula o minuscula), numero o _
+        // \S: cualquier cosa que no sea un espacio.
+        // * (hacerlo varias veces, de 0 a muchas)
+
+        return this.historial.map( lugar => {
+
+            return lugar.replace( /\w\S*/g, function( texto ){
+                return texto.charAt(0).toUpperCase() + texto.substr(1).toLowerCase();
+            });
+        });
     }
 
     get paramsMapbox(){
@@ -86,6 +100,8 @@ class Busquedas {
             return;
         }
 
+        this.historial = this.historial.splice(0, 7)    // Para mantener solo los ultimos 7 registros
+
         this.historial.unshift( lugar.toLocaleLowerCase() );
 
         // Grabar en una base de datos
@@ -95,7 +111,7 @@ class Busquedas {
     guardarBD(){
 
         const payload = {
-            historia: this.historial
+            historial: this.historial
         }
 
         fs.writeFileSync( this.bdPath, JSON.stringify( payload ) );
@@ -103,6 +119,14 @@ class Busquedas {
     }
 
     leerDB(){
+
+        // Verificar si existe la DB y cargar la informacion si existe
+        if ( !fs.existsSync( this.bdPath ) ) return;
+
+        const info = fs.readFileSync( this.bdPath, { encoding: 'utf-8' } );
+        const data = JSON.parse( info );
+
+        this.historial = data.historial;
 
     }
 

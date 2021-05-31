@@ -44,7 +44,7 @@ const main = async() => {
                 console.log('Maxima: ', clima.max);
                 break;
             case 2:
-                busquedas.historial.forEach( ( lugar, index ) => {
+                busquedas.historialCapitalizado.forEach( ( lugar, index ) => {
                     console.log(`${index + 1}. ${ lugar }`.blue);
                 });
 
